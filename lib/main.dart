@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
 
 void main() async {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
   await FlutterConfig.loadEnvVariables();
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
