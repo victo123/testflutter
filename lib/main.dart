@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
+  await FlutterConfig.loadEnvVariables();
 }
 
 class MyApp extends StatelessWidget {
@@ -26,7 +28,8 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(
+          title: 'Flutter Demo Home Page ${FlutterConfig.get('ENV1')}.'),
     );
   }
 }
@@ -98,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'You have pushed the button this many times: ${FlutterConfig.get('ENV2')}.',
             ),
             Text(
               '$_counter',
